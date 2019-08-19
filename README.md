@@ -1,6 +1,7 @@
 # Spring-Boot-Flight-Reservation
 
 #Cassandra- UDT
+</br>
 CREATE TYPE journey_details (    
    startDateOfJourney timestamp,  
    returnDateOfJourney timestamp,  
@@ -10,7 +11,8 @@ CREATE TYPE journey_details (
    flightNumber text  
 );
 
-# Cassandra Table Using UDT
+# Cassandra Table Using UDT 
+</br>
 CREATE TABLE trip_details (  
    emailId text,  
    trip_data FROZEN<journey_details>, 
