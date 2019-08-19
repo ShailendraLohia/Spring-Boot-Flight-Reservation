@@ -26,14 +26,25 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+dependencyManagement {
+    imports {
+        //Finchley.SR2: Not compatible with 2.1.x. 
+        //https://spring.io/projects/spring-cloud#release-trains
+        //mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Greenwich.RELEASE'
+    }
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.boot:spring-boot-test')
+    //compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     compileOnly('org.projectlombok:lombok')
+    compile("org.springframework.data:spring-data-cassandra")
+    //testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.1'
+    //testCompile 'org.junit.jupiter:junit-jupiter-engine:5.1.1'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.1'
-    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.1.1'
-    //testCompile group: 'junit', name: 'junit', version: '4.12'
+    'org.cassandraunit:cassandra-unit:2.2.2.1'
 }

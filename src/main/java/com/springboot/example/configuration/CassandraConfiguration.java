@@ -14,11 +14,12 @@ import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
-import org.springframework.data.cassandra.core.mapping.BasicCassandraMappingContext;
+//import org.springframework.data.cassandra.core.mapping.BasicCassandraMappingContext;
+import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
-@EnableCassandraRepositories
+@EnableCassandraRepositories(basePackages = "com.springboot.example.repository")
 //@Import(RepositoryRestMvcConfiguration.class)
 @EnableAutoConfiguration
 @EnableConfigurationProperties(CassandraProperties.class)
@@ -26,6 +27,9 @@ public class CassandraConfiguration extends AbstractCassandraConfiguration {
 
     @Autowired
     private CassandraConnectionFactory cassandraConnectionFactory;
+
+//    @Autowired
+//    private CassandraOperations cassandraTemplate;
 
     @Override
     protected String getKeyspaceName() {
@@ -54,11 +58,11 @@ public class CassandraConfiguration extends AbstractCassandraConfiguration {
     }
     protected boolean getMetricsEnabled() { return false; }
 
-    @Bean
-    public CassandraOperations operations() throws Exception {
-        return new CassandraTemplate(
-                session().getObject(), new MappingCassandraConverter(new BasicCassandraMappingContext()));
-    }
+//    @Bean
+//    public CassandraOperations operations() throws Exception {
+//        return new CassandraTemplate(
+//                session().getObject(), new MappingCassandraConverter(new CassandraMappingContext()));
+//    }
 
     @Bean
     public CassandraConnectionFactory cassandraConnectionFactory() {
