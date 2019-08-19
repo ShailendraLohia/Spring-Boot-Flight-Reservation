@@ -1,6 +1,6 @@
 # Spring-Boot-Flight-Reservation
 
-#Cassandra- UDT
+# Cassandra- UDT
 </br>
 CREATE TYPE journey_details (    
    startDateOfJourney timestamp,  
