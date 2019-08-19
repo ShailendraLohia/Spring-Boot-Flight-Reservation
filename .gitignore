@@ -1,6 +1,7 @@
 HELP.md
 .gradle
 /build/
+target/
 !gradle/wrapper/gradle-wrapper.jar
 .gradle/*
 *.bin
@@ -31,4 +32,8 @@ HELP.md
 /dist/
 /nbdist/
 /.nb-gradle/
+.DS_Store
+
+out
+target
 .DS_Store
